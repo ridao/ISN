@@ -1,0 +1,514 @@
+#Liste des modules
+
+from tkinter import *
+import webbrowser
+from tkinter.messagebox import *
+
+#liste des constantes de base et des Listes
+i=999
+m=0 ##Variable utile dans la fonc.Terminer2
+Al_dispo=[] ##Liste des aliments disponible
+AlRecette=[] ##Liste pour la fonc.Ajout
+Recettes=[['Crêpe','Oeuf','Farine','Beurre','Lait','Sucre'],['Brownie','Tablette de chocolat','Sucre vanillé','Beurre','Oeuf','Farine','Sel'],['Gâteau au yaourt','Oeuf','Levure','Yaourt'],['Gratin de chou-fleur','Lait','Gruyère','Chou-fleur','Crème fraîche'],['Tarte au citron','Pâte Brisée','Oeuf','Citron','Beurre',],['Tacos','Tomate','Boeuf haché','Poivron vert','Feuille de laitue','Tabasco'],['Flan de courgette','Courgette','Gruyère râpé','Lait','Oeuf','Feuille de basilic'],['Soupe aux légumes','Poireau','Carotte','Navet','Branche de célerie','Pomme de terre','Tomate','Courgette','Bouillon cube','Crème fraîche','Beurre'],['Salade niçoise','Tomate','Oeuf','Cébette','Poivron','Thon','Olive noire','Feuille de basilic','Radis'],['Quiche au fromage','Pâte feuilletée','Oeuf','Beurre','Crème fraîche épaisse','Fromage râpé'],['Pannacotta','Lait','Crème liquide','Feuille de gélatine','Coulis de framboise']]
+
+#Liste des fonctions
+
+def Ajout():
+    AlRecette.clear()
+    global ent_ajout_recette
+    global List_10
+    global FenAjout
+
+    FenAjout = Tk()
+    FenAjout.geometry('400x250')
+    FenAjout.title('Ajout de recettes')
+
+    Label_10=Label(FenAjout,text="Entrer le nom de la nouvelle recette / des aliments :")
+    ent_ajout_recette=Entry(FenAjout)
+    bouton_nomrecette=Button(FenAjout,text='Ajouter',command=Ajout1)
+    bouton_recterminer=Button(FenAjout,text='Terminer',command=Terminer)
+    bouton_recann=Button(FenAjout,text='Annuler',command=Annuler1)
+
+    Label_10.grid(row=0,column=0)
+    ent_ajout_recette.grid(row=0,column=1)
+    bouton_nomrecette.grid(row=1,column=1)
+    bouton_recterminer.grid(row=2,column=1)
+    bouton_recann.grid(row=3,column=1)
+
+    #Label_11=Label(FenAjout,text=Quand)
+
+    List_10 = Listbox (FenAjout)
+    List_10.pack
+    List_10.place(x=25,y=50)
+    ##Ajouter la fonction d'ajout:
+
+def Debug(): ##Fonction pour de verification
+    print(m)
+
+def NFen():
+    pass
+
+def Edition():
+    if askokcancel('En préparation', 'Pas disponible'):
+        pass
+    ##Ajouter l'édition du frigo
+
+def VAide():
+    pass
+    ##Mettre une vidéo d'aide
+
+def AHTML():
+    webbrowser.open('AHTML.html')
+    ##Aide html
+def Ajout1():
+    AlRe=ent_ajout_recette.get()
+    print(AlRe)
+    AlRecette.append(AlRe)
+    print(AlRecette)
+    List_10.insert(END,AlRecette[(len(AlRecette))-1])
+
+def Terminer():
+    Recettes.append(AlRecette)
+    print(Recettes)
+    AlRec=AlRecette[0]
+    print(AlRec)
+    List_2.insert(END,AlRec)
+    print(AlRecette)
+    FenAjout.destroy()
+
+def Marmiton():
+    marmiton="www.marmiton.org/recettes/recherche.aspx?aqt="
+    print(i)
+    if i!=999:
+        Nom2 = Nom1.replace(" ","--")
+        mar=marmiton+Nom2
+        print(mar)
+        webbrowser.open(mar)
+
+def Annuler1():
+    FenAjout.destroy()
+
+
+def Retrait():
+    global dele
+    global ent_dele_recette
+
+    dele = Tk()
+    dele.title('Retrait de recettes')
+    dele.geometry('250x150')
+
+    Label_20=Label(dele,text="Recette à supprimer:")
+    ent_dele_recette=Entry(dele)
+    bouton_delterminer=Button(dele,text='Terminer',command=Terminer2)
+    bouton_delann=Button(dele,text='Annuler',command=Annuler2)
+
+    Label_20.place(x=5,y=5)
+    ent_dele_recette.place(x=125,y=5)
+    bouton_delterminer.place(x=100,y=45)
+    bouton_delann.place(x=100,y=80)
+
+
+def Terminer2():
+    global d
+    deltext=ent_dele_recette.get()
+    m=len(Recettes)
+    for d in range(0,m):
+        if deltext==(Recettes[d][0]):
+            print(Recettes[d][0])
+            List_2.delete(d)
+            m=m+1
+            p=d
+        else:
+            print('rien')
+    dele.destroy()
+
+
+def Annuler2():
+    dele.destroy()
+
+def OO():
+    global O
+    O=0
+
+    ##Ajouter la fonction d'retrait
+
+def prerecette():
+
+    Ingredient1=Label(fenetre)
+    Ingredient2=Label(fenetre)
+    Ingredient3=Label(fenetre)
+    Ingredient4=Label(fenetre)
+    Ingredient5=Label(fenetre)
+    Ingredient6=Label(fenetre)
+    Ingredient7=Label(fenetre)
+    Ingredient8=Label(fenetre)
+    Ingredient9=Label(fenetre)
+    Ingredient10=Label(fenetre)
+    Ingredient11=Label(fenetre)
+    Ingredient12=Label(fenetre)
+    Ingredient1.place(x=450,y=120)
+    Ingredient2.place(x=450,y=140)
+    Ingredient3.place(x=450,y=160)
+    Ingredient4.place(x=450,y=180)
+    Ingredient5.place(x=450,y=200)
+    Ingredient6.place(x=450,y=220)
+    Ingredient7.place(x=450,y=240)
+    Ingredient8.place(x=450,y=260)
+    Ingredient9.place(x=450,y=280)
+    Ingredient10.place(x=450,y=300)
+    Ingredient11.place(x=450,y=320)
+    Ingredient12.place(x=450,y=340)
+    I1="                                                               "
+    I2="                                                               "
+    I3="                                                               "
+    I4="                                                               "
+    I5="                                                               "
+    I6="                                                               "
+    I7="                                                               "
+    I8="                                                               "
+    I9="                                                               "
+    I10="                                                              "
+    I11="                                                              "
+    I12="                                                              "
+    Ingredient1["text"]=I1
+    Ingredient2["text"]=I2
+    Ingredient3["text"]=I3
+    Ingredient4["text"]=I4
+    Ingredient5["text"]=I5
+    Ingredient6["text"]=I6
+    Ingredient7["text"]=I7
+    Ingredient8["text"]=I8
+    Ingredient9["text"]=I9
+    Ingredient10["text"]=I10
+    Ingredient11["text"]=I11
+    Nom_aliment=Label(fenetre)
+    Nom_aliment.place(x=580,y=95)
+    Nom1="                                                                                                                                                                    "
+    Nom_aliment["text"]=Nom1
+
+def QSS():
+    if askokcancel('Quitter le programme', 'Quitter ?'):
+        fenetre.destroy()
+
+def Ajout_aliment():
+    if ent_ajout_aliment.get() in Al_dispo:
+        Aliment_ajouté = ent_ajout_aliment.get()
+        A_Afficher = Aliment_ajouté + " est déjà dans le réfrigérateur"
+        Label_2=Label(fenetre)
+        Label_2["text"]=A_Afficher
+        Label_2.place(x=130,y=23)
+    else:
+        if ent_ajout_aliment.get()!="":
+            Al_dispo.append(ent_ajout_aliment.get())
+            Aliment_ajouté = ent_ajout_aliment.get()
+            A_Afficher = Aliment_ajouté + " a été ajouté"
+            Label_2=Label(fenetre)
+            Label_2["text"]=A_Afficher
+            Label_2.place(x=135,y=23)
+            Liste()
+
+def Recette():
+    global i
+    global Nom1
+    i=(List_2.curselection()[0])
+    print(i)
+    Nom1=(Recettes[i][0])
+    b=(len(Recettes[i])-1)
+    Ingredient1=Label(fenetre)
+    Ingredient2=Label(fenetre)
+    Ingredient3=Label(fenetre)
+    Ingredient4=Label(fenetre)
+    Ingredient5=Label(fenetre)
+    Ingredient6=Label(fenetre)
+    Ingredient7=Label(fenetre)
+    Ingredient8=Label(fenetre)
+    Ingredient9=Label(fenetre)
+    Ingredient10=Label(fenetre)
+    Ingredient11=Label(fenetre)
+    Ingredient12=Label(fenetre)
+    Ingredient1.place(x=450,y=120)
+    Ingredient2.place(x=450,y=140)
+    Ingredient3.place(x=450,y=160)
+    Ingredient4.place(x=450,y=180)
+    Ingredient5.place(x=450,y=200)
+    Ingredient6.place(x=450,y=220)
+    Ingredient7.place(x=450,y=240)
+    Ingredient8.place(x=450,y=260)
+    Ingredient9.place(x=450,y=280)
+    Ingredient10.place(x=450,y=300)
+    Ingredient11.place(x=450,y=320)
+    Ingredient12.place(x=450,y=340)
+
+    if len(Recettes[i])==2:
+        I1=(Recettes[i][1])
+        Ingredient1["text"]=I1
+    if len(Recettes[i])==3:
+        I1=(Recettes[i][1])
+        Ingredient1["text"]=I1
+        I2=(Recettes[i][2])
+        Ingredient2["text"]=I2
+    if len(Recettes[i])==4:
+        I1=(Recettes[i][1])
+        Ingredient1["text"]=I1
+        I2=(Recettes[i][2])
+        Ingredient2["text"]=I2
+        I3=(Recettes[i][3])
+        Ingredient3["text"]=I3
+    if len(Recettes[i])==5:
+        I1=(Recettes[i][1])
+        Ingredient1["text"]=I1
+        I2=(Recettes[i][2])
+        Ingredient2["text"]=I2
+        I3=(Recettes[i][3])
+        Ingredient3["text"]=I3
+        I4=(Recettes[i][4])
+        Ingredient4["text"]=I4
+    if len(Recettes[i])==6:
+        I1=(Recettes[i][1])
+        Ingredient1["text"]=I1
+        I2=(Recettes[i][2])
+        Ingredient2["text"]=I2
+        I3=(Recettes[i][3])
+        Ingredient3["text"]=I3
+        I4=(Recettes[i][4])
+        Ingredient4["text"]=I4
+        I5=(Recettes[i][5])
+        Ingredient5["text"]=I5
+    if len(Recettes[i])==7:
+        I1=(Recettes[i][1])
+        Ingredient1["text"]=I1
+        I2=(Recettes[i][2])
+        Ingredient2["text"]=I2
+        I3=(Recettes[i][3])
+        Ingredient3["text"]=I3
+        I4=(Recettes[i][4])
+        Ingredient4["text"]=I4
+        I5=(Recettes[i][5])
+        Ingredient5["text"]=I5
+        I6=(Recettes[i][6])
+        Ingredient6["text"]=I6
+    if len(Recettes[i])==8:
+        I1=(Recettes[i][1])
+        Ingredient1["text"]=I1
+        I2=(Recettes[i][2])
+        Ingredient2["text"]=I2
+        I3=(Recettes[i][3])
+        Ingredient3["text"]=I3
+        I4=(Recettes[i][4])
+        Ingredient4["text"]=I4
+        I5=(Recettes[i][5])
+        Ingredient5["text"]=I5
+        I6=(Recettes[i][6])
+        Ingredient6["text"]=I6
+        I7=(Recettes[i][7])
+        Ingredient7["text"]=I7
+    if len(Recettes[i])==9:
+        I1=(Recettes[i][1])
+        Ingredient1["text"]=I1
+        I2=(Recettes[i][2])
+        Ingredient2["text"]=I2
+        I3=(Recettes[i][3])
+        Ingredient3["text"]=I3
+        I4=(Recettes[i][4])
+        Ingredient4["text"]=I4
+        I5=(Recettes[i][5])
+        Ingredient5["text"]=I5
+        I6=(Recettes[i][6])
+        Ingredient6["text"]=I6
+        I7=(Recettes[i][7])
+        Ingredient7["text"]=I7
+        I8=(Recettes[i][8])
+        Ingredient8["text"]=I8
+    if len(Recettes[i])==10:
+        I1=(Recettes[i][1])
+        Ingredient1["text"]=I1
+        I2=(Recettes[i][2])
+        Ingredient2["text"]=I2
+        I3=(Recettes[i][3])
+        Ingredient3["text"]=I3
+        I4=(Recettes[i][4])
+        Ingredient4["text"]=I4
+        I5=(Recettes[i][5])
+        Ingredient5["text"]=I5
+        I6=(Recettes[i][6])
+        Ingredient6["text"]=I6
+        I7=(Recettes[i][7])
+        Ingredient7["text"]=I7
+        I8=(Recettes[i][8])
+        Ingredient8["text"]=I8
+        I9=(Recettes[i][9])
+        Ingredient9["text"]=I9
+    if len(Recettes[i])==11:
+        I1=(Recettes[i][1])
+        Ingredient1["text"]=I1
+        I2=(Recettes[i][2])
+        Ingredient2["text"]=I2
+        I3=(Recettes[i][3])
+        Ingredient3["text"]=I3
+        I4=(Recettes[i][4])
+        Ingredient4["text"]=I4
+        I5=(Recettes[i][5])
+        Ingredient5["text"]=I5
+        I6=(Recettes[i][6])
+        Ingredient6["text"]=I6
+        I7=(Recettes[i][7])
+        Ingredient7["text"]=I7
+        I8=(Recettes[i][8])
+        Ingredient8["text"]=I8
+        I9=(Recettes[i][9])
+        Ingredient9["text"]=I9
+        I10=(Recettes[i][10])
+        Ingredient10["text"]=I10
+    Nom_aliment=Label(fenetre)
+    Nom_aliment.place(x=580,y=95)
+    Nom_aliment["text"]=Nom1+" :"
+
+def Recherche():
+    A_Afficher= "                                           "
+    Label_4=Label(fenetre)
+    Label_4["text"]=A_Afficher
+    Label_4.place(x=590,y=23)
+    if ent_recherche_aliment.get() in Al_dispo:
+        A_Afficher="                                               "
+        Label_4=Label(fenetre)
+        Label_4["text"]=A_Afficher
+        Label_4.place(x=590,y=23)
+        Aliment_recherché = ent_recherche_aliment.get()
+        A_Afficher = Aliment_recherché + " a été trouvé dans le réfrigérateur"
+        Label_4=Label(fenetre)
+        Label_4["text"]=A_Afficher
+        Label_4.place(x=590,y=23)
+    else:
+         Aliment_recherché = ent_recherche_aliment.get()
+         A_Afficher = Aliment_recherché + " n'a pas été trouvé dans le réfrigérateur"
+         Label_4=Label(fenetre)
+         Label_4["text"]=A_Afficher
+         Label_4.place(x=590,y=23)
+
+def Suppression():
+    Aliment_supprimé = ent_supp_aliment.get()
+    if Aliment_supprimé in Al_dispo:
+        T=len(Al_dispo)
+        for m in range (0,T):
+            if Aliment_supprimé==Al_dispo[m]:
+                List_1.delete(m)
+        Label_6=Label(fenetre)
+        B_Afficher = Aliment_supprimé + " a été supprimé du réfrigérateur"
+        Label_6=Label(fenetre)
+        Label_6["text"]=B_Afficher
+        Label_6.place(x=140,y=420)
+        Al_dispo.remove(Aliment_supprimé)
+    else:
+        B_Afficher = Aliment_supprimé + " n'est pas dans le réfrigérateur"
+        Label_6=Label(fenetre)
+        Label_6["text"]=B_Afficher
+        Label_6.place(x=140,y=420)
+
+def Liste():
+    List_1.insert(END,Al_dispo[(len(Al_dispo))-1])
+
+
+
+#Fenetre de base
+
+fenetre = Tk()
+fenetre.geometry('900x506')
+fenetre.title('Gestionnaire de réfrigérateur')
+menubar = Menu(fenetre)
+
+
+
+menu1 = Menu(menubar, tearoff=0)
+menu1.add_command(label="Créer", command=NFen)
+menu1.add_command(label="Editer", command=Edition)
+menu1.add_separator()
+menu1.add_command(label="Quitter sans sauvegarder", command=QSS)
+menubar.add_cascade(label="Fichier", menu=menu1)
+
+menu2 = Menu(menubar, tearoff=0)
+menu2.add_command(label="Ajout", command=Ajout)
+menu2.add_command(label="Retrait", command=Retrait)
+menu2.add_command(label="Debug",command=Debug)
+menubar.add_cascade(label="Edition", menu=menu2)
+
+menu3 = Menu(menubar, tearoff=0)
+menu3.add_command(label="Vidéo d'aide", command=VAide)
+menu3.add_command(label="Fiche d'aide HTML", command=AHTML)
+menubar.add_cascade(label="Aide", menu=menu3)
+
+fenetre.config(menu=menubar)
+
+Label_1=Label(fenetre,text="Entrer le nouvel aliment :")
+ent_ajout_aliment=Entry(fenetre)
+bouton_ajout=Button(fenetre,text='Ajouter',command=Ajout_aliment)
+
+
+#Label_1.grid(row=0,column=0)
+#ent_ajout_aliment.grid(row=0,column=1)
+#bouton_ajout.grid(row=1,column=0)
+Label_1.place(x=0,y=1)
+ent_ajout_aliment.place(x=140,y=1)
+bouton_ajout.place(x=40,y=20)
+
+
+Label_3=Label(fenetre,text="Entrer l'aliment recherché :")
+ent_recherche_aliment=Entry(fenetre)
+bouton_recherche=Button(fenetre,text='Rechercher',command=Recherche)
+
+#Label_3.grid(row=2,column=0)
+#ent_recherche_aliment.grid(row=2,column=1)
+#bouton_recherche.grid(row=3,column=0)
+Label_3.place(x=440,y=1)
+ent_recherche_aliment.place(x=590,y=1)
+bouton_recherche.place(x=480,y=20)
+
+
+
+Label_5=Label(fenetre,text="Entrer l'aliment à supprimer :")
+ent_supp_aliment=Entry(fenetre)
+bouton_supp=Button(fenetre,text='Supprimer',command=Suppression)
+
+#Label_5.grid(row=4,column=0)
+#ent_supp_aliment.grid(row=4,column=1)
+#bouton_supp.grid(row=5,column=0)
+
+Label_5.place(x=0,y=400)
+ent_supp_aliment.place(x=165,y=400)
+bouton_supp.place(x=40,y=420)
+
+List_1 = Listbox (fenetre)
+
+
+List_1.place(x=100,y=100)
+
+List_2 = Listbox (fenetre)
+
+List_2.place(x=300,y=100)
+
+yDefilB = Scrollbar(fenetre, orient='vertical',)
+yDefilB.config(command=List_2.yview)
+yDefilB.place(x=423,y=100)
+
+List_2.config(yscrollcommand=yDefilB.set)
+
+bouton_sel=Button(fenetre,text='Selectionner',command=Recette)
+bouton_sel.place(x=320,y=275)
+bouton_eff=Button(fenetre,text='Effacer',command=prerecette)
+bouton_eff.place(x=320,y=305)
+bouton_marmiton=Button(fenetre,text='Rechercher sur Marmiton',command=Marmiton)
+bouton_marmiton.place(x=565,y=335)
+
+List_2.insert(1,"Crêpe")
+List_2.insert(2,"Brownie")
+List_2.insert(3,"Gâteau au yaourt")
+List_2.insert(4,"Gratin au chou-fleur")
+List_2.insert(5,"Tarte au citron")
+List_2.insert(6,"Tacos")
+List_2.insert(7,"Flan de courgette")
+List_2.insert(8,"Soupe aux légumes")
+List_2.insert(9,"Salade niçoise")
+List_2.insert(10,"Quiche au fromage")
+List_2.insert(11,"Pannacotta")
+
+
+fenetre.mainloop()
